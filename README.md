@@ -1,11 +1,12 @@
 # scry_engine_inmemory
 
 A real, kind-independent [`Scry.Core.EngineBehaviour`](https://github.com/joetjen/scry_core)
-implementation over a plain in-memory Elixir term store — `fetch/2` only,
-no query pushdown at all. Deliberately the simplest possible engine: the
+implementation over a plain in-memory Elixir term store — no native query
+language of its own, so `execute/3` delegates the whole query straight to
+`Scry.Core.QueryOps`. Deliberately the simplest possible engine: the
 default fixture every `scry_test_<kind>` package uses, and the concrete
-proof that `Scry.Core.Executor`'s own re-verification — not the engine —
-is what actually guarantees a query's result is correct.
+proof that `Scry.Core.QueryOps`'s own toolkit — not any engine-side
+translation — is what actually guarantees a query's result is correct.
 
 Kind-independent by construction, like every engine in this family: it
 only ever sees the `source`/`Scry.Core.Query.t()` shapes `Scry.Core.
@@ -44,7 +45,7 @@ conn = Conn.new() |> Conn.put(["users"], [%{"name" => "Bob", "age" => 17}])
 ```elixir
 def deps do
   [
-    {:scry_engine_inmemory, "~> 0.1.0"}
+    {:scry_engine_inmemory, "~> 1.0"}
   ]
 end
 ```

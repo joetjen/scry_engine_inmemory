@@ -1,6 +1,6 @@
 defmodule Scry.Engine.InMemory.Conn do
   @moduledoc """
-  The "connection" `Scry.Engine.InMemory.fetch/2` reads from -- not a
+  The "connection" `Scry.Engine.InMemory.execute/3` reads from -- not a
   real connection at all, just whatever static dataset a caller
   supplies. Named `Conn` anyway, matching the connection/config struct
   every real adapter exposes (impl_spec.md §2), so code written against
@@ -10,8 +10,8 @@ defmodule Scry.Engine.InMemory.Conn do
   adds more rows to an existing source (or creates one) afterward.
   There's no indexing, no query awareness, nothing beyond a plain
   `%{source => rows}` map -- see `Scry.Engine.ETS`/`Scry.Engine.
-  Exqlite` for engines that actually do something with `Scry.Core.
-  EngineBehaviour`'s own optional `fetch/3` pushdown callback.
+  Exqlite` for engines that actually translate part of a query into
+  their own backend's native query language from inside `execute/3`.
   """
 
   @typedoc "Keyed by source path (e.g. `[\"orders\"]`), matching `Scry.Core.Query.source`."
