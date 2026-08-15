@@ -14,9 +14,8 @@ Executor` already produces once any kind-specific vocabulary (`LAST`,
 eventually `via`/`hops`, ...) has been lowered away. No backend of its
 own — not for production use.
 
-Source: <https://github.com/joetjen/scry_engine_inmemory>. Specs live in
-the separate [`scry`](https://github.com/joetjen/scry) repository; the
-behaviour this implements lives in
+Source: <https://github.com/joetjen/scry_engine_inmemory>. The behaviour
+this implements lives in
 [`scry_core`](https://github.com/joetjen/scry_core).
 
 ## Usage

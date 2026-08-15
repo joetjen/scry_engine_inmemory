@@ -3,7 +3,7 @@ defmodule Scry.Engine.InMemory.Conn do
   The "connection" `Scry.Engine.InMemory.execute/3` reads from -- not a
   real connection at all, just whatever static dataset a caller
   supplies. Named `Conn` anyway, matching the connection/config struct
-  every real adapter exposes (impl_spec.md §2), so code written against
+  every real adapter exposes, so code written against
   this engine reads the same way it would against a real one.
 
   `new/1` starts from whatever you hand it (empty by default); `put/3`
